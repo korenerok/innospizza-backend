@@ -16,7 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('is_pizza');
+            $table->string('item_category');
             $table->decimal('price',8,2);
             $table->timestamps();
         });

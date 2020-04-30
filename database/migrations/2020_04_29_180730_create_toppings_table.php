@@ -16,7 +16,6 @@ class CreateToppingsTable extends Migration
         Schema::create('toppings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('addon_price',6,2);
             $table->timestamps();
         });
     }

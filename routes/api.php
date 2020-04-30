@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+Route::get('items','ItemController@index');
+Route::get('orders','OrderController@index');
+Route::post('orders','OrderController@create');
+Route::get('orders/{order}','OrderController@show');
+Route::put('orders/{order}','OrderController@addItemToOrder');

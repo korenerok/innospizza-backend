@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     public function items(){
-        return $this->belongsToMany('App\Item')->using('App\OrderItem');
+        return $this->belongsToMany('App\Item','order_items')->using('App\OrderItem');
     }
 
-    public function customer(){
+   /* public function customer(){
         return $this->belongsTo('App\User');
     }
+    */
 }

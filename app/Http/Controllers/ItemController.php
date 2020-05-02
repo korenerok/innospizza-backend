@@ -8,9 +8,9 @@ use App\Item;
 class ItemController extends Controller
 {
     public function index(){
-        $pizzas=Item::where('is_pizza',true)->inRandomOrder()->get()->toJson();
-        $other_items=Item::where('is_pizza',false)->inRandomOrder()->get()->toJson();
+        $pizzas=Item::where('item_category','pizza')->inRandomOrder()->get();
+        $other_items=Item::where('item_category','misc')->inRandomOrder()->get();
         $items=['pizzas'=>$pizzas,'misc'=>$other_items];
-        return $pizzas;
+        return json_encode($items);
     }
 }

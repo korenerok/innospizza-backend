@@ -23,4 +23,3 @@ Route::get('items','ItemController@index');
 Route::get('orders','OrderController@index');
 Route::post('orders','OrderController@create');
 Route::get('orders/{order}','OrderController@show');
-Route::put('orders/{order}','OrderController@addItemToOrder');

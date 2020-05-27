@@ -32,19 +32,19 @@ class UserController extends Controller
     public function register(Request $request){
         $validator=Validator::make($request->all(),[
             'name'=>'required',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:App\User',
             'password'=>'required',
-            'password_confirmation'=>'required|same:password',
+            'confirm_password'=>'required|same:password',
         ]);
         if($validator->fails()){
-            return response()->json(['error'=>$validator->errors()],401);
+            return response()->json(['error'=>$validator->errors()->all()],401);
         }
         $input= $request->all();
         $input['password']=bcrypt($input['password']);
         $user=User::create($input);
         $success['token']=$user->createToken('session')->accessToken;
         $success['name']=$user->name;
-        return response()->json(['sucess'=>$success],$this->successStatus);
+        return response()->json(['success'=>$success],$this->successStatus);
     }
 
     /*

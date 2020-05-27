@@ -19,11 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 Route::post('login', 'UserController@login');
-Route::post('register', 'UserController@register');
+Route::post('users', 'UserController@register');
 Route::group(['middleware'=>'auth:api'],function(){
+    Route::get('orders','OrderController@list');
     Route::post('details','UserController@details');
 });
 Route::get('items','ItemController@index');
-Route::get('orders','OrderController@index');
 Route::post('orders','OrderController@create');
 Route::get('orders/{order}','OrderController@show');
